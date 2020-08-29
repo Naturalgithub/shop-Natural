@@ -2,7 +2,10 @@
   <div id="app">
     <div id="nav">
       <!-- <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link> -->阿斯顿
+      <router-link to="/about">About</router-link> -->
+      <!-- <textarea name="text" id="" cols="30" rows="10"></textarea>
+      <button>发送</button>
+      <a href="http://localhost:7777/#/"></a> -->
     </div>
     <router-view/>
   </div>
