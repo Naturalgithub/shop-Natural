@@ -1,22 +1,26 @@
 <template>
   <div class="index">
-    <textarea
-      name="text"
-      id=""
-      cols="30"
-      rows="10"
-      v-model="text"
-    >
-    </textarea>
-    <button @click="btn">发送</button>
-    <!-- 打开新页面 -->
-    <a href="http://localhost:7777/#/"></a>
-
+    <div style="width:200px; float:left; margin-right:200px;border:solid 1px #333;">
+      <div id="color">Frame Color</div>
+    </div>
+    <div>
+      <iframe
+        id="child"
+        src="http://lsLib.com/lsLib.html"
+      ></iframe>
+    </div>
   </div>
 </template>
 
 <script>
+window.onload = function () {
+  window.frames[0].postMessage('getcolor', 'http://lslib.com')
+}
 
+window.addEventListener('message', function (e) {
+  var color = e.data
+  document.getElementById('color').style.backgroundColor = color
+}, false)
 export default {
   name: 'index',
   components: {},
@@ -29,18 +33,13 @@ export default {
   },
   created () { },
   mounted () {
-    window.addEventListener('message', function (e) {
-      this.msaPage = e.source
-      this.text = e.data
-    })
+
   },
   activited () { },
   update () { },
   beforeRouteUpdate () { },
   methods: {
-    btn () {
-      this.msaPage && this.msaPage.postMessage(this.text, '*')
-    }
+
   },
   filter: {},
   computed: {},
